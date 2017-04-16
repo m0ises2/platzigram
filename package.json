@@ -1,0 +1,19 @@
+{
+  "name": "platzigram",
+  "version": "0.1.0",
+  "description": "Proyecto creado para el curso JavaScript definitivo.",
+  "main": "server.js",
+  "scripts": {},
+  "keywords": [
+    "platzigram",
+    "javascript",
+    "curso",
+    "definitivo",
+    "platzi"
+  ],
+  "author": "Moises Alvarado <moisesalvarado84@gmail.com> (https://github.com/m0ises2)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
