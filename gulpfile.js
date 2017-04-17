@@ -33,7 +33,12 @@ gulp.task('assets', () => {
 });
 
 /*
-  Esta tarea permite
+  Esta tarea permite transpilar todo el código JS escrito en EC6 a EC5
+  y de esta manera el proyecto pueda correr en cualquier navegador.
+  Usamos browserify para construir el bundle con todos los require incrustados
+  luego, babelify para transpilar de EC6 y EC7 a EC5.
+
+  Se crea un archivo app.js que contiene TODA la lógica del frontend del cliente:
 */
 gulp.task('scripts', () => {
   browserify('./src/index.js')

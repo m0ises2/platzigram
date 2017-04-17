@@ -17,6 +17,24 @@ app.get('/', (req, res) => {
   {});
 });
 
+app.get('/signup', (req, res) => {
+  res.render('index',
+  /*data que requiere el template clave:valor*/
+  {});
+});
+
+app.get('/signin', (req, res) => {
+  res.render('index',
+  /*data que requiere el template clave:valor*/
+  {});
+});
+
+// Ruta bypass para errores 404:
+app.get('*', (req, res) => {
+  // Aquí se deberia renderizar la vista de error 404 - Not Found
+  res.status(404).send('Nope');
+});
+
 app.listen(config.port, (err) => {
   if (err) return console.log('Hubo error'), process.exit(1);
 
