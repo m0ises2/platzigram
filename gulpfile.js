@@ -6,6 +6,10 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
+var babelify = require('babelify');
+var browserify = require('browserify');
+var preset = require('babel-preset-es2015');
+var source = require('vinyl-source-stream');
 
 /*
   Esta tarea permite compilar el código scss (sass) y posicionarlo en la carpeta public
@@ -26,7 +30,20 @@ gulp.task('assets', () => {
   gulp
     .src('assets/*')
     .pipe(gulp.dest('./public'));
-})
+});
+
+/*
+  Esta tarea permite
+*/
+gulp.task('scripts', () => {
+  browserify('./src/index.js')
+    .transform(babelify, preset)
+    .bundle()
+    .pipe(source('index.js'))
+    .pipe(rename('app.js'))
+    .pipe(gulp.dest('public'));
+});
+
 
 // Tarea por defecto.
-gulp.task('default', ['styles', 'assets']);
+gulp.task('default', ['styles', 'assets', 'scripts']);
