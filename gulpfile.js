@@ -10,6 +10,7 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var preset = require('babel-preset-es2015');
 var source = require('vinyl-source-stream');
+var watchify = require("watchify");
 
 /*
   Esta tarea permite compilar el código scss (sass) y posicionarlo en la carpeta public
@@ -49,6 +50,42 @@ gulp.task('scripts', () => {
     .pipe(gulp.dest('public'));
 });
 
+function compile(watch) {
+  var bundle = watchify(browserify('./src/index.js'));
+
+  function reBundle() {
+    bundle
+      .transform(babelify, preset)
+      .bundle()
+      .pipe(source('index.js'))
+      .pipe(rename('app.js'))
+      .pipe(gulp.dest('public'));
+  }
+
+  if (watch) {
+    bundle.on('update', () => {
+      console.log('--> Bundling...');
+      reBundle();
+    });
+  }
+
+  reBundle();
+}
+
+/*
+  Tarea para build:
+*/
+gulp.task('build', () => {
+  // se llama la primera vez, por eso no se le pasa true como argumento:
+  return compile();
+});
+
+/*
+  Tarea para Watch:
+*/
+gulp.task('watch', () => {
+  return compile(true);
+});
 
 // Tarea por defecto.
 gulp.task('default', ['styles', 'assets', 'scripts']);
