@@ -50,7 +50,7 @@ gulp.task('scripts', () => {
     .pipe(gulp.dest('public'));
 });
 
-function compile(watch) {
+/*function compile(watch) {
   var bundle = watchify(browserify('./src/index.js'));
 
   function reBundle() {
@@ -70,7 +70,7 @@ function compile(watch) {
   }
 
   reBundle();
-}
+}*/
 
 /*
   Tarea para build:
