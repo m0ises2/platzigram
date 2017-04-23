@@ -21,7 +21,7 @@ let signInForm = yo`<div class="col s12 m7">
       </div>
       <div class="row">
         <div class="login-box">
-          ¿No posees uan cuenta? <a href="/signup">Regístrate</a>
+          ¿No posees una cuenta? <a href="/signup">Regístrate</a>
         </div>
       </div>`;
 

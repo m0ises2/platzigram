@@ -2555,6 +2555,12 @@ var page = require('page');
 var template = require('./template');
 
 page('/', function (context, next) {
+  // Setteamos el título con Jquery:
+  //$('title').html('Home');
+
+  // Setteamos el título manualmente con document:
+  document.title = "Home";
+
   // Instancia del contenedor principal:
   var main = $('#main-container');
 
@@ -2599,6 +2605,10 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var yo = require('yo-yo');
 
+/*
+  El parámetro box es el HTML de lo que queremos incrustar
+  en nuestra landing Page.
+*/
 module.exports = function landing(box) {
   return yo(_templateObject, box);
 };
@@ -2610,6 +2620,12 @@ var page = require('page');
 var template = require('./template');
 
 page('/signin', function (context, next) {
+  // Setteamos el título:
+  // $('title').html('Sigin');
+
+  // Setteamos el título manualmente con document:
+  document.title = "Signin";
+
   // Instancia del contenedor principal:
   var main = $('#main-container');
 
@@ -2638,6 +2654,12 @@ var page = require('page');
 var template = require('./template');
 
 page('/signup', function (context, next) {
+  // Setteamos el título:
+  // $('title').html('signup');
+
+  // Setteamos el título manualmente con document:
+  document.title = "Signup";
+
   // Instancia del contenedor principal:
   var main = $('#main-container');
 
