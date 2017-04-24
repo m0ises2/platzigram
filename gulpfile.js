@@ -3,14 +3,14 @@
   Esta herramienta nos sirve para automatizar las tareas de compilación de sass,
   creación de directorio public, minificación de archivos JS, y un montón de cosas más.
 */
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var rename = require('gulp-rename');
-var babelify = require('babelify');
-var browserify = require('browserify');
-var preset = require('babel-preset-es2015');
-var source = require('vinyl-source-stream');
-var watchify = require("watchify");
+let gulp = require('gulp');
+let sass = require('gulp-sass');
+let rename = require('gulp-rename');
+let babelify = require('babelify');
+let browserify = require('browserify');
+let preset = require('babel-preset-es2015');
+let source = require('vinyl-source-stream');
+let watchify = require("watchify");
 
 /*
   Esta tarea permite compilar el código scss (sass) y posicionarlo en la carpeta public

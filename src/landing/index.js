@@ -1,3 +1,6 @@
+/*
+  Layout para las páginas donde el usuario no está loggeado.
+*/
 let yo = require('yo-yo');
 
 /*
