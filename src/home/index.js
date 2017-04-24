@@ -20,8 +20,9 @@ page('/', (context, next) => {
       },
       url: 'office.jpg',
       likes: 135,
-      liked: true,
-      description: 'Mi oficina bella.'
+      liked: false,
+      description: 'Mi oficina bella.',
+      createdAt: new Date(2017, 0, 1)
     },
     {
       user: {
@@ -31,7 +32,8 @@ page('/', (context, next) => {
       url: 'office.jpg',
       likes: 2,
       liked: true,
-      description: 'Mi Home'
+      description: 'Mi Home',
+      createdAt: new Date(2017, 3, 21)
     }
   ];
 

@@ -1,5 +1,11 @@
 // Router:
 let page = require('page');
+// i18n
+let moment = require('moment');
+
+require('moment/locale/es');
+
+moment.locale('es');
 
 // Módulos nuestros:
 /*
