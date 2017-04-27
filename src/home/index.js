@@ -1,7 +1,10 @@
 let page = require('page');
 let template = require('./template');
+// Middleware para mostrar el header:
+let headerMiddleware = require('../header');
+let agent = require('superagent');
 
-page('/', (context, next) => {
+page('/', /*Middlewares: */headerMiddleware, loadPictures, /*Callback: */(context, next) => {
   // Setteamos el título con Jquery:
     //$('title').html('Home');
 
@@ -11,31 +14,18 @@ page('/', (context, next) => {
   // Instancia del contenedor principal:
   let main = $('#main-container');
 
-  // Array que simula las fotografías de un usuario:
-  let pictures = [
-    {
-      user: {
-        username: 'm0ises2',
-        avatar: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/15727333_10210823481159662_8507986276484312547_n.jpg?oh=4280d29e73a4f5c2844629c791e7fc1f&oe=59819406'
-      },
-      url: 'office.jpg',
-      likes: 1,
-      liked: false,
-      description: 'Mi oficina bella.',
-      createdAt: new Date(2017, 0, 1)
-    },
-    {
-      user: {
-        username: 'm0ises2',
-        avatar: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/15727333_10210823481159662_8507986276484312547_n.jpg?oh=4280d29e73a4f5c2844629c791e7fc1f&oe=59819406'
-      },
-      url: 'office.jpg',
-      likes: 0,
-      liked: false,
-      description: 'Mi Home',
-      createdAt: new Date(2017, 3, 21)
-    }
-  ];
-
-  main.html(template(pictures));
+  main.html(template(context.pictures));
 });
+
+// Middleware:
+function loadPictures(context, next) {
+  agent
+    .get('/api/pictures')
+    .end((err, res) => {
+      if (err) return console.log(err);
+
+      context.pictures = res.body;
+      console.log('holis', res.body);
+      next();
+    });
+}
