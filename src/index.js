@@ -9,6 +9,7 @@ let page = require('page');
 require('./home');
 require('./signup');
 require('./signin');
+require('./footer');
 
 // Invocando a page:
 page.start(); // Equivale a llamar a page();

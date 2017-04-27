@@ -19,7 +19,7 @@ page('/', (context, next) => {
         avatar: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/15727333_10210823481159662_8507986276484312547_n.jpg?oh=4280d29e73a4f5c2844629c791e7fc1f&oe=59819406'
       },
       url: 'office.jpg',
-      likes: 135,
+      likes: 1,
       liked: false,
       description: 'Mi oficina bella.',
       createdAt: new Date(2017, 0, 1)
@@ -30,8 +30,8 @@ page('/', (context, next) => {
         avatar: 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/15727333_10210823481159662_8507986276484312547_n.jpg?oh=4280d29e73a4f5c2844629c791e7fc1f&oe=59819406'
       },
       url: 'office.jpg',
-      likes: 2,
-      liked: true,
+      likes: 0,
+      liked: false,
       description: 'Mi Home',
       createdAt: new Date(2017, 3, 21)
     }

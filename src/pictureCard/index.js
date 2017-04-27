@@ -1,18 +1,5 @@
 let yo = require('yo-yo');
-/*
-  esta condición es un polyfill para poder tener disponible Intl en el
-  navegador safari.
-*/
-if ( !window.Intl ) {
-  window.Intl = require('intl');
-}
-
-let IntlRelativeFormat = window.IntlRelativeFormat = require('intl-relativeformat');
-// Locales de idioma:
-require('intl-relativeformat/dist/locale-data/es.js');
-require('intl-relativeformat/dist/locale-data/en.js');
-
-var rf = new IntlRelativeFormat('es');
+let translate = require('../translate');
 
 module.exports = function(picture) {
   let el;
@@ -28,11 +15,11 @@ module.exports = function(picture) {
             <img src="${pic.user.avatar}" class="avatar"/>
             <span class="username">${pic.user.username}</span>
           </a>
-          <small class="right time"> ${rf.format(pic.createdAt)} </small>
+          <small class="right time"> ${translate.date.format(pic.createdAt)} </small>
           <p>
             <a class="left" href="#" onclick=${like.bind(null, pic, true)}> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
             <a class="left" href="#" onclick=${like.bind(null, pic, false)}> <i class="fa fa-heart" aria-hidden="true"></i> </a>
-            <span class="left likes"> ${pic.likes} me gusta </span>
+            <span class="left likes"> ${ translate.message( 'likes', { likes: pic.likes } ) } </span>
           </p>
         </div>
       </div>`;
