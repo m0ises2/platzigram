@@ -1,8 +1,23 @@
-var express = require('express');
-var config = require('./config');
+let express = require('express');
+let config = require('./config');
+let multer  = require('multer')
+let ext = require('file-extension');
+
+// Configurando el storage de Multer:
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '.' + ext(file.originalname))
+  }
+})
+
+// Instsnciando multer:
+let upload = multer({ storage: storage });
 
 // Instancia del servidor Web creado por express:
-var app = express();
+let app = express();
 
 // Template engine setup:
 app.set('view engine', 'pug');
@@ -29,7 +44,7 @@ app.get('/signin', (req, res) => {
   {});
 });
 
-// Ruta para API:
+// Rutas para API:
 app.get('/api/pictures', (req, res) => {
   // Array que simula las fotografías de un usuario:
   let pictures = [
@@ -58,6 +73,13 @@ app.get('/api/pictures', (req, res) => {
   ];
 
   res.status(200).send(pictures);
+});
+
+app.post('/api/pictures', upload.single('picture'), (req, res) => {
+  if (!req.file) res.status(500).send('Error subiendo archivo')
+
+  res.status(200).send('Archivo subido exitosamente.')
+
 });
 
 // Ruta bypass para errores 404:
